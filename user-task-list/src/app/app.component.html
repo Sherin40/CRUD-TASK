@@ -1,0 +1,132 @@
+<div class="container">
+  <button type="button" class="my-button" (click)="toggleAddUserForm()">Add User</button>
+  <form *ngIf="showAddUserForm" [formGroup]="addUser" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="firstname">Name:</label>
+      <input type="text" class="form-control" id="firstname" formControlName="name">
+    </div>
+    <div class="form-group">
+      <label for="gender">Gender:</label>
+      <input type="text" class="form-control" id="gender" formControlName="gender">
+    </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" class="form-control" id="email" formControlName="email">
+    </div>
+    <div class="form-group">
+      <label for="status">Status:</label>
+      <input type="text" class="form-control" id="status" formControlName="status">
+    </div>
+    <button type="submit" class="my-button">Submit</button>
+    <button type="submit" class="my-button">Back</button>
+  </form>
+
+  <!-- <button type="button" (click)="getSearchResult()" class="btn btn-primary btn-block mb-3  text-dark">search</button> -->
+  <div>
+    <table class="table table-bordered table-responsive" *ngIf="responseData.length">
+      <thead>
+        <th class="col-2"> Name</th>
+        <th class="col-2">Email</th>
+        <th class="col-2">Gender</th>
+        <th class="col-2">Status</th>
+        <th class="col-2">Action</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let result of responseData">
+          <td>{{result.name}}</td>
+          <td><a>{{result.email}}</a></td>
+          <td>{{result.gender}}</td>
+          <td><a>{{result.status}}</a></td>
+          <td>
+            <!-- <button class="btn btn-sm btn-primary" data-toggle="modal" data-target=".bd-example-modal"
+              (click)="viewData(result)"><i class="fa fa-eye" style="font-size:17px "></i></button>
+            <button class="btn btn-sm btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg"
+              (click)="editData(result)"><i class="fa fa-pencil" style="font-size:17px"></i></button>
+            <button class="btn btn-sm btn-primary" (click)="deleteData(result.id)"><i class="fa fa-trash"
+                style="font-size:17px"></i></button> -->
+            <button class="btn btn-sm btn-icon" data-toggle="modal" data-target=".bd-example-modal"
+              (click)="viewData(result)"><i class="fa fa-eye"></i></button>
+            <button class="btn btn-sm btn-icon" data-toggle="modal" data-target=".bd-example-modal-lg"
+              (click)="editData(result)"><i class="fa fa-pencil"></i></button>
+            <button class="btn btn-sm btn-icon-one" (click)="deleteData(result.id)"><i class="fa fa-trash"></i></button>
+
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row m-5">
+          <div class="col-6">
+            <div class="form-group">
+              <label for="full-name">Full Name </label>
+              <input type="text" class="form-control" id="full-name" placeholder="Full Name" formControlName="fullname">
+
+            </div>
+            <div class="form-group">
+              <label for="mailId">Email </label>
+              <input type="email" class="form-control" id="mailId" placeholder="Email">
+            </div>
+          </div>
+          <div class="col-6">
+
+            <div class="form-group">
+              <label for="gender">Gender</label>
+              <input type="text" class="form-control" id="first-name" placeholder="Gender">
+            </div>
+            <div class="form-group">
+              <label for="status">Status </label>
+              <input type="text" class="form-control" id="status" placeholder="status">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)=" saveChanges()">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade bd-example-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">User Data</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <div>Name: {{responseData.name}}</div>
+        <div>Gender: {{responseData.gender}}</div>
+        <div>Email: {{responseData.email}}</div>
+        <div>Status: {{responseData.status}}</div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+  <!-- <button (click)="previousPage()">Previous</button>
+  <span>{{ currentPage }}</span>
+  <button (click)="nextPage()">Next</button> -->
+
+</div>

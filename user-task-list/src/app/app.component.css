@@ -1,0 +1,33 @@
+.my-button {
+    background-color: #bbc4c5;
+    color: #090c0c;
+    border: none;
+    padding: 8px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-right:10px
+  }
+  
+  .my-button:hover {
+    background-color: #686e6e;
+  }
+
+  .btn-icon {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    color: #0a48cf; /* Change the color of the icons */
+    font-size: 17px;
+    margin-right:20px
+  }
+  
+.btn-icon-one{
+  background-color: transparent;
+    border: none;
+    padding: 0;
+    color: #ff0000; /* Change the color of the icons */
+    font-size: 17px;
+    margin-right:20px
+}
+  
+  
